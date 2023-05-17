@@ -1,7 +1,6 @@
 package web.service;
 
 import web.model.Car;
-import web.model.CarDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,21 +19,16 @@ public class CarServiceImpl implements CarService {
 
 
     @Override
-    public void saveCar(CarDao carDao) {
-        String brand = carDao.getBrand();
-        String model = carDao.getModel();
-        int millage = carDao.getMileage();
-            Car newCar = new Car(brand, model, millage);
-            cars.add(newCar);
-        }
-
-        @Override
-        public List<Car> showAllCars () {
-            return cars;
-        }
+    public List<Car> showAllCars() {
+        return cars;
+    }
 
     @Override
     public List<Car> showCountCars(List<Car> cars, int count) {
-        return cars.stream().limit(count).collect(Collectors.toList());
+        if (count < 0 | count > cars.size()) {
+            return cars;
+        } else {
+            return cars.stream().limit(count).collect(Collectors.toList());
+        }
     }
 }
