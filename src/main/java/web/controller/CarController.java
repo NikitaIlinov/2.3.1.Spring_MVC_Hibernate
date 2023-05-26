@@ -12,6 +12,6 @@ public class CarController {
     @GetMapping("/addCar")
     public String showAddCarPage(ModelMap model) {
         model.addAttribute("carForm", new User());
-        return "addCar";
+        return "addUser";
     }
 }
