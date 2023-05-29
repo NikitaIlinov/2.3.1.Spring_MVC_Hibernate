@@ -6,22 +6,16 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
-<h1>Cars</h1>
-<a href="addCar">Add car</a>
-<a href="cars?count=4">Show 4 cars</a>
-<a href="cars?count=3">Show 3 cars</a>
-<a href="cars?count=2">Show 2 cars</a>
-<a href="cars?count=1">Show 1 car</a>
-<br/><br/>
+<h1>Users</h1>
 <div>
     <table border="1">
         <tr>
-            <th>Brand</th>
-            <th>Model</th>
-            <th>Millage</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
         </tr>
-        <tr th:each ="car : ${cars}">
-            <td th:utext="${car.brand}">...</td>
+        <tr th:each ="user : ${users}">
+            <td th:utext="${user.id}">...</td>
             <td th:utext="${car.model}">...</td>
             <td th:utext="${car.mileage}">...</td>
         </tr>
