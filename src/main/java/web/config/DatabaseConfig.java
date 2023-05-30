@@ -1,5 +1,5 @@
 package web.config;
-import jakarta.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
@@ -13,8 +13,6 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Objects;
 import java.util.Properties;
@@ -22,10 +20,10 @@ import java.util.Properties;
 @EnableJpaRepositories
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
-@ComponentScan("web")
+@ComponentScan("web.service")
 public class DatabaseConfig {
     private final Environment env;
-
+    @Autowired
     public DatabaseConfig(Environment env) {
         this.env = env;
     }

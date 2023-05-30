@@ -13,14 +13,13 @@ import web.model.User;
 
 import java.util.List;
 @Service
-@Qualifier("userService")
 @Transactional
 public class UserServiceImpl implements UserService {
 
     private UserDao userDao;
 
     @Autowired
-    public void UserServiceImpl(UserDao userDao) {
+    public UserServiceImpl(UserDao userDao) {
         this.userDao = userDao;
     }
 
