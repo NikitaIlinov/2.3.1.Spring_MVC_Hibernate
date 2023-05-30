@@ -9,11 +9,11 @@
 <h1>Create a User:</h1>
 
 <form th:action="@{/addUser}"
-      th:object="${userForm}" method="POST">
-  Brand:
+      th:object="${addUser}" method="POST">
+  Name:
   <input type="text" th:field="*{name}" />
   <br/>
-  Model:
+  Age:
   <input type="text" th:field="*{age}" />
   <br/>
   <input type="submit" value="Create" />
