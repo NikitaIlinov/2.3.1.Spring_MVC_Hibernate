@@ -39,12 +39,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(User user, Long id) {
-        userDao.updateUser(user, id);
-    }
-
-    @Override
-    public User findById(Long Id) {
-        return null;
+    public User findById(Long id) {
+        return userDao.findById(id);
     }
 }

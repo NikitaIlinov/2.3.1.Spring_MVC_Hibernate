@@ -22,7 +22,7 @@ public class UserController {
     }
 
     @GetMapping ("/addUser")
-    public String showAddUserPage(ModelMap model) {
+    public String showSaveUserPage(ModelMap model) {
         model.addAttribute("user", new User());
         return "addUser";
     }
@@ -38,9 +38,9 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("/edit/{id}")
-    public String showEditUserPage(@PathVariable("id") Long id, ModelMap model) {
-        model.addAttribute("userEdit", new User());
-        return "editUser";
+    @GetMapping("/users/edit/{id}")
+    public String updateUserPage(@PathVariable("id") Long id, @ModelAttribute("user") User user,  ModelMap model) {
+        model.addAttribute("user", userService.findById(id));
+        return "addUser";
     }
 }

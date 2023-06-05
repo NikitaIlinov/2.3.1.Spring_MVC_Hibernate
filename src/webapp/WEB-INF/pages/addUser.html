@@ -10,6 +10,8 @@
 <h1>Create a User:</h1>
 <form th:action="@{/}"
       th:object="${user}" method="POST">
+
+  <input type="hidden" th:field="*{id}" />
   Name:
   <input type="text" th:field="*{name}" />
   <br/>
