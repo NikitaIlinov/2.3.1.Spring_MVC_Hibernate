@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Create a User:</h1>
-<form th:action="@{/}"
+<form th:action="@{/addUser}"
       th:object="${user}" method="POST">
 
   <input type="hidden" th:field="*{id}" />
@@ -22,6 +22,6 @@
 </form>
 
 <br/>
-
+<a href="users">Show all user`s</a>
 </body>
 </html>

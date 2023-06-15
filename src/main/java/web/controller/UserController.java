@@ -1,8 +1,6 @@
 package web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -21,12 +19,12 @@ public class UserController {
         return "users";
     }
 
-    @GetMapping ("/addUser")
+    @GetMapping ("/addUserPage")
     public String showSaveUserPage(ModelMap model) {
         model.addAttribute("user", new User());
-        return "addUser";
+        return "addUserPage";
     }
-    @PostMapping
+    @PostMapping("/addUser")
     public String createUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
         return "redirect:/";
@@ -39,8 +37,14 @@ public class UserController {
     }
 
     @GetMapping("/users/edit/{id}")
-    public String updateUserPage(@PathVariable("id") Long id, @ModelAttribute("user") User user,  ModelMap model) {
+    public String showUpdateUserPage(@PathVariable("id") Long id, @ModelAttribute("user") User user,  ModelMap model) {
         model.addAttribute("user", userService.findById(id));
-        return "addUser";
+        return "editUserPage";
+    }
+
+    @PostMapping("/editUser")
+    public String updateUser(@ModelAttribute("user") User user) {
+        userService.updateUser(user);
+        return "redirect:/";
     }
 }

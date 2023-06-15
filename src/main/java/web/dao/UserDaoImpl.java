@@ -19,15 +19,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void saveUser(User user) {
-        if(user.getId() != null) {
-            User updateUser = entityManager.find(User.class, user.getId());
-            updateUser.setName(user.getName());
-            updateUser.setAge(user.getAge());
-            entityManager.persist(updateUser);
-        } else {
-            entityManager.persist(user);
-        }
-        entityManager.close();
+        entityManager.persist(user);
     }
 
     @Override
@@ -39,5 +31,13 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User findById(Long id) {
         return entityManager.find(User.class, id);
+    }
+
+    @Override
+    public void updateUser(User user) {
+        User updateUser = entityManager.find(User.class, user.getId());
+        updateUser.setName(user.getName());
+        updateUser.setAge(user.getAge());
+        entityManager.persist(updateUser);
     }
 }
